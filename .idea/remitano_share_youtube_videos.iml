@@ -135,7 +135,7 @@
     <orderEntry type="library" scope="PROVIDED" name="websocket-extensions (v0.1.5, rbenv: 2.7.4) [gem]" level="application" />
     <orderEntry type="library" scope="PROVIDED" name="xpath (v3.2.0, rbenv: 2.7.4) [gem]" level="application" />
     <orderEntry type="library" scope="PROVIDED" name="youtube-dl.rb (v0.3.1.2016.09.11.1, rbenv: 2.7.4) [gem]" level="application" />
-    <orderEntry type="library" scope="PROVIDED" name="yt (v0.28.5, rbenv: 2.7.4) [gem]" level="application" />
+    <orderEntry type="library" scope="PROVIDED" name="yt (v0.33.4, rbenv: 2.7.4) [gem]" level="application" />
     <orderEntry type="library" scope="PROVIDED" name="zeitwerk (v2.6.7, rbenv: 2.7.4) [gem]" level="application" />
   </component>
   <component name="RModuleSettingsStorage">

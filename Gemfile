@@ -24,6 +24,9 @@ gem 'bcrypt', '~> 3.1.7'
 
 gem 'youtube-dl.rb'
 gem 'yt', '~> 0.33.4'
+
+gem 'google-api-client', '~> 0.11.1'
+
 gem 'open3'
 
 gem 'rufus-scheduler'

@@ -4,7 +4,7 @@
   <div class="alert alert-danger"><%= flash[:error] %></div>
 <% end %>
 
-<%= form_tag session_index_path do %>
+<%= form_tag login_path do %>
   <div class="form-group">
     <%= label_tag :username %>
     <%= text_field_tag :username, nil, class: 'form-control' %>
@@ -16,6 +16,17 @@
   </div>
 
   <%= submit_tag "Log in", class: 'btn btn-primary' %>
+
+  <% if flash[:alert] %>
+    <div class="alert alert-danger" role="alert">
+      <span><%= flash[:alert] %></span>
+    </div>
+  <% end %>
+  <% if flash[:notice] %>
+    <div class="alert alert-success">
+      <span><%= flash[:notice] %></span>
+    </div>
+  <% end %>
 
   <p>If you don't have an account? <%= link_to "Sign Up", signup_path %></p>
 <% end %>

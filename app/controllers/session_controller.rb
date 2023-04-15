@@ -1,5 +1,7 @@
 class SessionController < ApplicationController
   def new
+    flash[:alert] = nil
+    flash[:notice] = nil
   end
 
   def create
@@ -9,7 +11,8 @@ class SessionController < ApplicationController
       flash[:notice] = "Logged in"
       redirect_to root_path
     else
-      flash.now[:error] = 'Invalid username or password'
+      flash[:alert] = 'Invalid username or password'
+      render :new
     end
   end
 

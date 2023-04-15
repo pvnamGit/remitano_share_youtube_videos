@@ -32,7 +32,7 @@ RSpec.describe SessionController, type: :request do
       end
 
       it "sets an error message" do
-        expect(flash.now[:error]).to eq("Invalid username or password")
+        expect(flash.now[:alert]).to eq("Invalid username or password")
       end
     end
   end

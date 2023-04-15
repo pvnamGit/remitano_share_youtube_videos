@@ -91,7 +91,7 @@ GEM
     factory_bot_rails (6.2.0)
       factory_bot (~> 6.2.0)
       railties (>= 5.0.0)
-    faker (3.1.1)
+    faker (3.2.0)
       i18n (>= 1.8.11, < 2)
     faraday (1.10.3)
       faraday-em_http (~> 1.0)
@@ -182,7 +182,7 @@ GEM
     nokogiri (1.14.3)
       mini_portile2 (~> 2.8.0)
       racc (~> 1.4)
-    open3 (0.1.0)
+    open3 (0.1.2)
     os (1.1.4)
     pg (1.4.6)
     pry (0.14.2)
@@ -352,6 +352,7 @@ DEPENDENCIES
   selenium-webdriver
   spring
   spring-watcher-listen (~> 2.0.0)
+  terrapin (~> 0.6.0)
   turbolinks (~> 5)
   tzinfo-data
   web-console (>= 3.3.0)

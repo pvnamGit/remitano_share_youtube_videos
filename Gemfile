@@ -31,6 +31,7 @@ gem 'open3'
 
 gem 'rufus-scheduler'
 
+gem 'terrapin', '~> 0.6.0'
 # Use Active Storage variant
 # gem 'image_processing', '~> 1.2'
 

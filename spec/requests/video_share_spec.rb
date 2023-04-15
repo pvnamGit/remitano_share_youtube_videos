@@ -42,7 +42,7 @@ RSpec.describe VideoShareController, type: :request do
 
         post '/share', params: valid_url
 
-        expect(flash[:error]).to eq("Fail to share video")
+        expect(flash[:alert]).to eq("Fail to share video")
       end
 
     end

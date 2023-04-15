@@ -9,16 +9,16 @@ RSpec.describe UserController, type: :request do
         User.destroy_all
       end
       it "creates a new user" do
-        expect { post '/signup', params: { user: user_params } }.to change(User, :count).by(1)
+        expect { post '/user', params:  user_params }.to change(User, :count).by(1)
       end
 
       it "sets the session's current user id" do
-        post '/signup', params: { user: user_params }
+        post '/user', params:  user_params
         expect(session[:current_user_id]).to eq(User.first.id)
       end
 
       it "sets the flash notice message" do
-        post '/signup', params: { user: user_params }
+        post '/user', params:  user_params
         expect(flash[:notice]).to eq("User created.")
       end
     end
@@ -33,15 +33,15 @@ RSpec.describe UserController, type: :request do
         User.destroy_all
       end
       it "does not create a new user because username is existed" do
-        expect { post '/signup', params: { user: invalid_user_params } }.not_to change(User, :count)
+        expect { post '/user', params: { user: invalid_user_params } }.not_to change(User, :count)
       end
 
       it "does not create a new user because wrong password confirmation" do
-        expect { post '/signup', params: { user: wrong_confirmation_password_params } }.not_to change(User, :count)
+        expect { post '/user', params: { user: wrong_confirmation_password_params } }.not_to change(User, :count)
       end
 
       it "sets the flash notice error message" do
-        post '/signup', params: { user: wrong_confirmation_password_params }
+        post '/user', params:  wrong_confirmation_password_params
         expect(flash[:alert]).to eq("Wrong confirmation password")
       end
     end

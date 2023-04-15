@@ -29,7 +29,6 @@ class VideoShareController < ApplicationController
     thumbnail_url = video_info.thumbnail_url
     video = current_user.video_shares.new(url: params[:url], title: title, description: description, thumbnail_url: thumbnail_url)
     if video.save
-      flash[:notice] = "Success"
       redirect_to root_path
     end
     flash[:error] = "Fail to share video"

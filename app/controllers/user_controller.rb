@@ -1,14 +1,25 @@
 class UserController < ApplicationController
 
   def new
+    flash[:alert] = nil
+    flash[:notice] = nil
   end
 
   def index
   end
 
   def create
+    check_existed_user = User.find_by(username: params[:username])
+    if (check_existed_user)
+      flash[:alert] = "Username already created"
+      @user = User.new(username: user_params[:username])
+      return render :new
+    end
+
     if (user_params[:password] != user_params[:password_confirmation])
-      return flash[:alert] = "Wrong confirmation password"
+      flash[:alert] = "Wrong confirmation password"
+      @user = User.new(username: user_params[:username])
+      return render :new
     end
 
     @user = User.new(user_params)

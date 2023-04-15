@@ -43,12 +43,7 @@ RSpec.describe "SessionController", type: :feature do
 
   describe "DELETE #destroy" do
     before do
-      visit login_path
-
-      fill_in "Username", with: user.username
-      fill_in "Password", with: user.password
-
-      click_button "Log in"
+      login(user)
     end
 
     it "logs the user out and redirects to the root page" do

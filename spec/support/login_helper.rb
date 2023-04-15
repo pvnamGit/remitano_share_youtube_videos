@@ -1,3 +1,5 @@
+require 'rails_helper'
+
 module LoginHelper
   def login(user)
     visit login_path

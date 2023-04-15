@@ -35,3 +35,7 @@
 .btn-logout {
     margin-left: 5px;
 }
+
+.alert alert-danger {
+    color: #B00100;
+}

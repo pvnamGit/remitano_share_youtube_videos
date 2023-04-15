@@ -9,19 +9,19 @@ class VideoShareController < ApplicationController
     if current_user.nil?
       redirect_to root_path
     end
+    flash[:alert] = nil
+    flash[:notice] = nil
   end
 
   def create
-    if current_user.nil?
-      flash[:error] = "You must be logged in to share a video."
-      return
-    end
     is_video_existed = VideoShare.find_by(url: params[:url], user_id: current_user.id)
     if is_video_existed
-      return flash[:error] = "You have already shared this video"
+      flash[:alert] = "You have already shared this video"
+      return render :new
     end
     unless valid_youtube_url?(params[:url])
-      return flash[:error] = "Invalid URL"
+      flash[:alert] = "Invalid URL"
+      return render :new
     end
     video_info = Yt::Video.new url: params[:url]
     title = video_info.title
@@ -30,8 +30,10 @@ class VideoShareController < ApplicationController
     video = current_user.video_shares.new(url: params[:url], title: title, description: description, thumbnail_url: thumbnail_url)
     if video.save
       redirect_to root_path
+    else
+      flash[:alert] = "Fail to share video"
+      render :new
     end
-    flash[:error] = "Fail to share video"
   end
 
   def my_videos

@@ -2,6 +2,7 @@
 require 'spec_helper'
 require_relative 'support/factory_bot'
 require_relative 'support/chrome'
+require_relative 'support/login_helper'
 
 ENV['RAILS_ENV'] ||= 'test'
 require_relative '../config/environment'
@@ -68,4 +69,5 @@ RSpec.configure do |config|
   # arbitrary gems may also be filtered via:
   # config.filter_gems_from_backtrace("gem name")
   config.include Capybara::DSL, type: :request
+  config.include LoginHelper
 end

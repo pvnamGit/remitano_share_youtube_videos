@@ -1,9 +1,13 @@
-<h1>Home</h1>
-<ul>
+<div class="video-row">
   <% @videos.each do |video| %>
-    <li>
-      <h2><%= video.title %></h2>
-      <p><%= video.description %></p>
-    </li>
+    <div class="col-md-4">
+      <div class="card mb-4 box-shadow">
+        <img class="card-img" src="<%= video.thumbnail_url %>" alt="Card image cap">
+        <div class="card-body">
+          <h5 class="card-title"><%= link_to video.title, video.url, target: "_blank" %></h5>
+          <p class="card-text"><%= video.description %></p>
+        </div>
+      </div>
+    </div>
   <% end %>
-</ul>
+</div>

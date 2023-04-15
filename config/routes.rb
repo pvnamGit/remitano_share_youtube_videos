@@ -13,4 +13,6 @@ Rails.application.routes.draw do
   post '/share', to: 'video_share#create'
   get '/share', to: 'video_share#new'
   get '/videos', to: 'video_share#index'
+  get '/my_videos', to: 'video_share#my_videos', as: 'my_videos'
+  delete '/my_videos/:id', to: 'video_share#destroy', as: 'delete_video'
 end

@@ -1,4 +1,5 @@
 class ApplicationController < ActionController::Base
+  helper_method :current_user
 
   # configuration for Yt gem
   Yt.configure do |config|

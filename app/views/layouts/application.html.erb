@@ -1,15 +1,48 @@
 <!DOCTYPE html>
 <html>
   <head>
-    <title>RemitanoShareYoutubeVideos</title>
+    <title>Remitano Share Youtube Videos</title>
     <%= csrf_meta_tags %>
     <%= csp_meta_tag %>
 
     <%= stylesheet_link_tag 'application', media: 'all', 'data-turbolinks-track': 'reload' %>
-    <%= javascript_pack_tag 'application', 'data-turbolinks-track': 'reload' %>
+    <%# <%= javascript_pack_tag 'application', 'data-turbolinks-track': 'reload' %>
   </head>
 
   <body>
+    <header class="header">
+      <h2><%= link_to 'Homepage', root_path %></h2>
+      <div class="right-header">
+        <% if current_user %>
+          <button class="btn-share-video"><%= button_to 'Share video', share_path, method: :get %>Share video</button>
+          <p>Welcome <%= current_user.username %>!</p>
+          <button class="btn-logout"><%= button_to 'Logout', logout_path, method: :delete %></button>
+        <% else %>
+          <button class="btn-login"><%= link_to 'Login', login_path %></button>
+          <button class="btn-signup"><%= link_to 'Signup', signup_path %></button>
+        <% end %>
+      </div>
+    </header>
     <%= yield %>
   </body>
 </html>
+
+<style>
+    .header {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        padding: 1rem;
+        background-color: #f2f2f2;
+    }
+    .right-header {
+        display: flex;
+        justify-content: space-between;
+    }
+    .btn-login {
+        margin-right: 5px;
+    }
+    .btn-logout {
+        margin-left: 5px;
+    }
+</style>

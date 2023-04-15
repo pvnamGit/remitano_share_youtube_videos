@@ -10,7 +10,7 @@ class ApplicationController < ActionController::Base
   private
   def authenticate_user!
     unless current_user
-      nil
+      redirect_to new_user_path
     end
   end
 

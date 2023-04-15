@@ -9,7 +9,7 @@ RSpec.describe "Sign up", type: :feature do
     end
   end
   context "create an account" do
-    after(:each) do
+    after do
       User.destroy_all
     end
     it "allows users to sign up" do
@@ -38,11 +38,11 @@ RSpec.describe "Sign up", type: :feature do
   end
 
   context "already have username" do
-    before(:each) do
+    before do
       User.create(username: "testuser", password_digest: "password")
     end
 
-    after(:each) do
+    after do
       User.destroy_all
     end
     it 'should not allow to create' do

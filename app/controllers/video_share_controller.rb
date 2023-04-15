@@ -1,5 +1,5 @@
 class VideoShareController < ApplicationController
-  before_action :authenticate_user!, :only => [:create]
+  before_action :authenticate_user!, :only => [:create, :my_videos, :destroy]
 
   def index
     @videos = VideoShare.all

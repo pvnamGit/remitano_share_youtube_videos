@@ -5,7 +5,7 @@ RSpec.describe UserController, type: :request do
     context "with valid user parameters" do
       let(:user_params) {  { username: "testuser", password: "password", password_confirmation: "password" } }
 
-      after(:each) do
+      after do
         User.destroy_all
       end
       it "creates a new user" do
@@ -26,10 +26,10 @@ RSpec.describe UserController, type: :request do
     context "with invalid user parameters" do
       let(:invalid_user_params) { { username: "testuser", password: "testpassword2", password_confirmation: "testpassword2" } }
       let(:wrong_confirmation_password_params) { { username: "testuser1", password: "testpassword2", password_confirmation: "testpassword1" } }
-      before(:each) do
+      before do
         User.create(:username => 'testuser', :password => 'testpassword2', :password_confirmation => 'testpassword2')
       end
-      after(:each) do
+      after do
         User.destroy_all
       end
       it "does not create a new user because username is existed" do

@@ -6,9 +6,6 @@ RSpec.describe VideoShareController, type: :feature do
   before do
     login(user)
   end
-  after(:each) do
-    VideoShare.destroy_all
-  end
 
   after do
     VideoShare.destroy_all
@@ -116,6 +113,9 @@ RSpec.describe VideoShareController, type: :feature do
       visit my_videos_path
       click_button "Delete"
       expect(current_path).to eq(root_path)
+      expect(page).not_to have_selector("h5", text: "Test Title")
+
+      visit my_videos_path
       expect(page).not_to have_selector("h5", text: "Test Title")
     end
   end

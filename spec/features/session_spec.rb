@@ -5,14 +5,17 @@ RSpec.describe "SessionController", type: :feature do
   include LoginHelper
   let(:user) { User.create(username: "testuser", password: "password", password_confirmation: "password") }
 
-  describe "GET #new" do
+  after do
+    User.destroy_all
+  end
+  describe "Open login page" do
     it "renders the login page" do
       visit login_path
       expect(page).to have_selector("h1", text: "Log in")
     end
   end
 
-  describe "POST #create" do
+  describe "Login" do
     context "with valid credentials" do
       it "logs the user in and redirects to the root page" do
         visit login_path
@@ -41,12 +44,12 @@ RSpec.describe "SessionController", type: :feature do
     end
   end
 
-  describe "DELETE #destroy" do
+  describe "logs the user out" do
     before do
       login(user)
     end
 
-    it "logs the user out and redirects to the root page" do
+    it "and redirects to the root page" do
       click_button "Logout"
 
       expect(page).to have_current_path(root_path)

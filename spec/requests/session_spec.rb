@@ -3,12 +3,12 @@ require 'rails_helper'
 RSpec.describe SessionController, type: :request do
   describe "Login" do
     context "with valid login credentials" do
-      before(:each) do
+      before do
         @user = User.create(:username => 'test_login', :password => 'password')
         post '/login', params: { username: 'test_login', password: 'password' }
       end
 
-      after(:each) do
+      after do
         User.destroy_all
       end
 
@@ -38,13 +38,13 @@ RSpec.describe SessionController, type: :request do
   end
 
   describe "Log out" do
-    before(:each) do
+    before do
       User.create(:username => 'test_login', :password => 'password')
       post '/login', params: { username: 'test_login', password: 'password' }
       delete '/logout'
     end
 
-    after(:each) do
+    after do
       User.destroy_all
     end
 

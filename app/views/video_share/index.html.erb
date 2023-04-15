@@ -1,0 +1,9 @@
+<h1>Home</h1>
+<ul>
+  <% @videos.each do |video| %>
+    <li>
+      <h2><%= video.title %></h2>
+      <p><%= video.description %></p>
+    </li>
+  <% end %>
+</ul>

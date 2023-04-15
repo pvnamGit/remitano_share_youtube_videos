@@ -2,7 +2,13 @@ class VideoShareController < ApplicationController
   before_action :authenticate_user!, :only => [:create]
 
   def index
-    VideoShare.all
+    @videos = VideoShare.all
+  end
+
+  def new
+    if current_user.nil?
+      redirect_to root_path
+    end
   end
 
   def create
@@ -15,14 +21,17 @@ class VideoShareController < ApplicationController
       return flash[:error] = "You have already shared this video"
     end
     unless valid_youtube_url?(params[:url])
-      return ("Invalid URL")
+      return flash[:error] = "Invalid URL"
     end
     video_info = Yt::Video.new url: params[:url]
     title = video_info.title
     description = video_info.description
-    video = current_user.video_shares.new(url: params[:url], title: title, description: description)
+    thumbnail_url = video_info.thumbnail_url
+    video = current_user.video_shares.new(url: params[:url], title: title, description: description, thumbnail_url: thumbnail_url)
     if video.save
+
       return flash[:notice] = "Success"
+      redirect_to root_path
     end
     flash[:error] = "Fail to share video"
   end

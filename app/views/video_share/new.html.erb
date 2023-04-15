@@ -1,0 +1,7 @@
+<%= form_tag share_path, method: :post do %>
+  <div>
+    <%= label_tag :url, "YouTube URL" %>
+    <%= text_field_tag :url %>
+  </div>
+  <%= submit_tag "Submit" %>
+<% end %>

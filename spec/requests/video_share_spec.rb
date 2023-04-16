@@ -64,7 +64,7 @@ RSpec.describe VideoShareController, type: :request do
         VideoShare.create(title: "Test Title", description: "Test Description 1", thumbnail_url: "http://example.com/thumbnail1", user_id: @user.id)
         VideoShare.create(title: "Test Title 2", description: "Test Description 2", thumbnail_url: "http://example.com/thumbnail1", user_id: @user.id)
         get '/my_videos'
-        expect(assigns(:my_videos)).to eq(@user.video_shares.all)
+        expect(assigns(:my_videos)).to eq(@user.video_shares.all.order(created_at: :desc))
       end
     end
     context "when user is not authenticated" do

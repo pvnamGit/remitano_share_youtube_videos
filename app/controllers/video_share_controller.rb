@@ -2,7 +2,7 @@ class VideoShareController < ApplicationController
   before_action :authenticate_user!, :only => [:create, :my_videos, :destroy]
 
   def index
-    @videos = VideoShare.all
+    @videos = VideoShare.all.order(created_at: :desc)
   end
 
   def new
@@ -41,7 +41,7 @@ class VideoShareController < ApplicationController
   end
 
   def my_videos
-    @my_videos = current_user.video_shares.all
+    @my_videos = current_user.video_shares.all.order(created_at: :desc)
   end
 
   def destroy

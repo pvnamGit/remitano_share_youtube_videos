@@ -7,10 +7,10 @@ default: &default
 development:
   adapter: postgresql
   encoding: unicode
-  database: remitano_share_youtube_videos
+  database: <%= ENV.fetch('DATABASE_DEVELOPMENT') %>
   pool: 5
-  username: postgres
-  password: admin
+  username: <%= ENV.fetch('POSTGRESQL_USERNAME') %>
+  password: <%= ENV.fetch('POSTGRESQL_PASSWORD') %>
 
 # Warning: The database defined as "test" will be erased and
 # re-generated from your development database when you run "rake".
@@ -18,10 +18,10 @@ development:
 test:
   adapter: postgresql
   encoding: unicode
-  database: remitano_share_youtube_videos_test
+  database: <%= ENV.fetch('DATABASE_TEST') %>
   pool: 5
-  username: postgres
-  password: admin
+  username: <%= ENV.fetch('POSTGRESQL_USERNAME') %>
+  password: <%= ENV.fetch('POSTGRESQL_PASSWORD') %>
 
 production:
   adapter: postgresql

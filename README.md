@@ -28,26 +28,28 @@ Things you may want to cover:
 
 * **Database creation**
 
-    - Create new database for development (For example: video_shares)
+    Create new database for development (For example: video_shares)
     > CREATE DATABASE video_shares;
 
 
     - Create new database for test (For example: video_shares_test)
-    > CREATE DATABASE video_shares_test;
+    CREATE DATABASE video_shares_test;
 
     Open file `config/database.yml`, modified `database, username, password` of each group.
 
-* Database initialization
+* **Database initialization**
 
     Run command
 
     > rails db:migrate
 
-* How to run the test suite
+* **How to run the test suite**
     - For unit test, run command
     > bundle exec rspec ./spec/requests/<file_name.rb>
 
     - For integration test, run command
     > bundle exec rspec ./spec/features/<file_name.rb>
 
-* ...
+* **Start server**
+    Run command
+    > rails server
